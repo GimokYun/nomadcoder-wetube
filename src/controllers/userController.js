@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import session from "express-session";
 import fetch from "node-fetch";
 import User from "../models/User";
