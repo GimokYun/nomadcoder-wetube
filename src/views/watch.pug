@@ -26,7 +26,7 @@ block content
                 div.avatar-base.avatar--medium
                     span=video.owner.name[0]
             else
-                img(src=video.owner.avatarUrl crossorigin).avatar--medium
+                img(src=video.owner.avatarUrl, crossorigin).avatar--medium
             span.watch__owner-name=video.owner.name
         div.watch__text
             h1=video.title
@@ -54,7 +54,7 @@ block content
                     div.avatar-base.avatar--small
                         span=loggedInUser.name[0]
                 else
-                    img(src=loggedInUser.avatarUrl crossorigin).avatar--small
+                    img(src=loggedInUser.avatarUrl, crossorigin).avatar--small
                 textarea(placeholder="Write a comment", cols="100", rows="1")#textarea
                 button Add Comment
     div.video__comments
@@ -66,7 +66,7 @@ block content
                         div.avatar-base.avatar--small
                             span=comment.owner.name[0]
                     else
-                        img(src=comment.owner.avatarUrl crossorigin).avatar--small
+                        img(src=comment.owner.avatarUrl, crossorigin).avatar--small
                     div.video__comment-content
                         span.video__comment-owner=comment.owner.name
                         span.video__comment-text=comment.text

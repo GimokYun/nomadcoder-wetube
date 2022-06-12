@@ -7,7 +7,7 @@ mixin video(video)
                     div.avatar-base.avatar--small
                         span=video.owner.name[0]
                 else
-                    img(src=video.owner.avatarUrl crossorigin).avatar--small
+                    img(src=video.owner.avatarUrl, crossorigin).avatar--small
             div.video-mixin__text
                 div.video-mixin__title
                     span=video.title
