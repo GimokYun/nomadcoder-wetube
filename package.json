@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/GimokYun/nomadcoder-wetube.git"
   },
+  "engines": {
+    "node": "16.15.0"
+  },
   "scripts": {
     "start": "node build/init.js",
     "build": "npm run build:server && npm run build:assets",
