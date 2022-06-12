@@ -20,7 +20,7 @@ header
                             div.avatar-base.avatar--small
                                 span=loggedInUser.name[0]
                         else
-                            img(src=loggedInUser.avatarUrl).avatar--small
+                            img(src=loggedInUser.avatarUrl, crossorigin).avatar--small
             else
                 li 
                     a(href="/login") Login
