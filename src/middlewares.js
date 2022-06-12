@@ -12,21 +12,13 @@ const s3 = new aws.S3({
 const s3ImageUploader = multerS3({
     s3: s3,
     bucket: "wimm-ygm/images",
-    Condition: {
-        StringEquals: {
-            "s3:x-amz-acl": ["public-read"],
-        },
-    }
+    acl: "public-read",
 });
 
 const s3VideoUploader = multerS3({
     s3: s3,
     bucket: "wimm-ygm/videos",
-    Condition: {
-        StringEquals: {
-            "s3:x-amz-acl": ["public-read"],
-        },
-    }
+    acl: "public-read"
 });
 
 export const localsMiddleware = (req, res, next) => {
