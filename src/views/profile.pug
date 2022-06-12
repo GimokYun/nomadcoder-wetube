@@ -7,7 +7,7 @@ block content
             div.avatar-base.avatar--large
                 span=user.name[0]
         else
-            img(src="/" + user.avatarUrl).avatar--large
+            img(src=user.avatarUrl).avatar--large
         h3=user.name
     div.video-grid
         each video in user.videos 

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.startGithubLogin = exports.see = exports.postLogin = exports.postJoin = exports.postEdit = exports.postChangePassword = exports.logout = exports.getLogin = exports.getJoin = exports.getEdit = exports.getChangePassword = exports.finishGithubLogin = void 0;
 
-var _bcrypt = _interopRequireDefault(require("bcrypt"));
+var _bcryptjs = _interopRequireDefault(require("bcryptjs"));
 
 var _expressSession = _interopRequireDefault(require("express-session"));
 
@@ -153,7 +153,7 @@ var postLogin = /*#__PURE__*/function () {
 
           case 7:
             _context2.next = 9;
-            return _bcrypt["default"].compare(password, user.password);
+            return _bcryptjs["default"].compare(password, user.password);
 
           case 9:
             match = _context2.sent;
@@ -450,7 +450,7 @@ var postChangePassword = /*#__PURE__*/function () {
           case 3:
             user = _context5.sent;
             _context5.next = 6;
-            return _bcrypt["default"].compare(oldPassword, user.password);
+            return _bcryptjs["default"].compare(oldPassword, user.password);
 
           case 6:
             match = _context5.sent;

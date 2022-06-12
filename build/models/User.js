@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var _bcrypt = _interopRequireDefault(require("bcrypt"));
+var _bcryptjs = _interopRequireDefault(require("bcryptjs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -53,7 +53,7 @@ userSchema.pre("save", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorR
           }
 
           _context.next = 3;
-          return _bcrypt["default"].hash(this.password, 5);
+          return _bcryptjs["default"].hash(this.password, 5);
 
         case 3:
           this.password = _context.sent;
