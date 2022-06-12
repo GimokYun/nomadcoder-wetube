@@ -1,0 +1,16 @@
+extends base
+include mixins/video
+
+block content
+    div.profile__data
+        if !user.avatarUrl
+            div.avatar-base.avatar--large
+                span=user.name[0]
+        else
+            img(src="/" + user.avatarUrl).avatar--large
+        h3=user.name
+    div.video-grid
+        each video in user.videos 
+            +video(video)
+        else 
+            span.empty-message No videos found

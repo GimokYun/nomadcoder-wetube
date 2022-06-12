@@ -1,0 +1,16 @@
+extends base
+
+block content 
+    if errorMessage 
+        span=errorMessage
+    form(method="POST", enctype="multipart/form-data").edit-profile__form
+        label(for="avatar") Avatar 
+        input(type="file", name="avatar", id="avatar", accept="image/*", value=loggedInUser.avatarUrl)
+        input(type="text", name="name", placeholder="Name", required, value=loggedInUser.name)
+        input(type="email", name="email", placeholder="Email", required, value=loggedInUser.email)  
+        input(type="text", name="username", placeholder="Username", required, value=loggedInUser.username)
+        input(type="text", name="location", placeholder="Location", value=loggedInUser.location)
+        input(type="submit", value="Update Profile")
+        if !loggedInUser.githubLoginOnly
+            div.edit-profile__password
+                a(href="change-password") Change Password &rarr;

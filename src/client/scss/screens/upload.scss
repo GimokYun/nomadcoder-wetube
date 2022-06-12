@@ -1,0 +1,42 @@
+.recording {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 60%;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba($color: #000, $alpha: 0.3);
+    border: 1px solid rgba($color: #fff, $alpha: 0.1);
+
+    .recording__title {
+        display: flex;
+        justify-content: center;
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    video {
+        margin-bottom: 20px;
+    }
+
+    button {
+        all:unset;
+        background-color: white;
+        color:$bg;
+        padding: 10px 20px;
+        font-weight: 400;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+            color: $red;
+            margin-right: 5px;
+        }
+    }
+}

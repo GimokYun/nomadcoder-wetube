@@ -1,0 +1,22 @@
+extends base
+
+block content
+    div.recording
+        div.recording__title
+            h1 Make video with your camera
+        video#preview
+        button#recordingBtn Start Recording
+    if errorMessage     
+        span=errorMessage
+    form(method="POST", enctype="multipart/form-data")
+        label(for="video") Video File
+        input(type="file", id="video", name="video", accept="video/*", required)
+        label(for="thumbnail") Thumbnail File
+        input(type="file", id="thumbnail", name="thumbnail", accept="image/*", required)
+        input(type="text", placeholder="Title", name="title", required, maxlength=80)
+        input(type="text", placeholder="Description", name="description", required)
+        input(type="text", placeholder="Hashtags(Separated by comma)", name="hashtags", required)
+        input(type="submit", value="Upload Video")
+
+block scripts 
+    script(src="/static/js/recorder.js")

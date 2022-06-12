@@ -1,0 +1,222 @@
+#videoContainer {
+    position: relative;
+    width: 100%;
+
+    video {
+        width: 100%;
+    }
+
+    #videoControls {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        box-sizing: border-box;
+        width: 95%;
+        margin: 0 auto;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 4fr 1fr auto;
+        background-color: $bg;
+        align-items: center;
+        padding: 10px 15px;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+
+        &.showing {
+            opacity: 1;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        input,
+        button {
+            cursor: pointer;
+        }
+
+        .play {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            .play__time {
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
+
+        .timeline {
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        .volume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .volume__range {
+                width: 60%;
+            }
+
+            .volume__btn {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.watch__title {
+    padding:24px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .watch__text {
+        h1 {
+            font-weight: 600;
+            font-size: 36px;
+            margin-bottom:12px;
+        }
+    
+        span {
+            font-size:18px;
+            opacity: 0.8;
+        }
+    }
+
+    .watch__owner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+
+        .watch__owner-name {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
+}
+
+.watch__description {
+    padding: 24px;
+    margin-bottom:24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    h1 {
+        font-size:18px;
+        margin-bottom: 12px;
+    }
+    p {
+        font-weight: 300;
+        opacity: 0.8;
+        font-size:14px;
+    }
+
+    .watch__btns {
+        display: flex;
+        margin-top: 24px;
+
+        a {
+            display: block;
+            margin-right: 10px;
+            background-color: white;
+            color:$bg;
+            border-radius: 10px;
+            padding:10px 20px;
+        }
+    }
+}
+
+.video__comments-add {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+
+    .video__comments-count {
+        font-size: 18px;
+    }
+
+    .video__comments-form {
+        all:unset;
+        display: flex;
+        align-items: center;
+        margin-top:24px;
+
+        textarea {
+            margin: 0 12px;
+            background: none;
+            border:none;
+            outline: none;
+            color: white;
+            font-size:14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: border-color 0.3s ease-in-out;
+
+            &:focus {
+                border-color: rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        button {
+            all:unset;
+            font-size:14px;
+            color: rgba(255, 255, 255, 0.3);
+            padding:5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border:1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: white;
+                border-color: white;
+                color:$bg;
+            }
+        }
+    }
+}
+
+.video__comments {
+    margin-top: 24px;
+    padding:0 24px;
+
+    .video__comment {
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+        width: 100%;
+
+        .video__comment-content {
+            display: flex;
+            flex-direction: column;
+            margin-left:12px;
+            width:80%;
+
+            .video__comment-owner {
+                font-size: 12px;
+                opacity: 0.8;
+                margin-bottom: 6px;
+            }
+
+            .video__comment-text {
+                font-size: 16px;
+            }
+        }
+
+        .video__comment-delete {
+            width:10%;
+            cursor: pointer;
+        }
+    }
+}

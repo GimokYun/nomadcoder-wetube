@@ -1,0 +1,81 @@
+extends base
+
+block content
+    div#videoContainer(data-id=video._id)
+        video(autoplay, src="/" + video.fileUrl)
+        div#videoControls
+            div.play
+                button#play.play__btn
+                    i.fas.fa-play
+                div.play__time
+                    span#currentTime 00:00
+                    span  / 
+                    span#totalTime 00:00
+            div.timeline
+                input(type="range", min="0", step="1", value=0)#timeline
+            div.volume
+                input(type="range", max="1", min="0", step="0.1", value=0.5)#volume.volume__range
+                button#mute.volume__btn
+                    i.fas.fa-volume-up
+            div.fullscreen
+                button#fullScreen 
+                    i.fas.fa-expand
+    div.watch__title
+        a(href=`/users/${video.owner._id}`).watch__owner
+            if !video.owner.avatarUrl
+                div.avatar-base.avatar--medium
+                    span=video.owner.name[0]
+            else
+                img(src="/" + video.owner.avatarUrl).avatar--medium
+            span.watch__owner-name=video.owner.name
+        div.watch__text
+            h1=video.title
+            if video.meta.views === 1
+                span #{video.meta.views} view ∙ 
+            else 
+                span #{video.meta.views} views ∙ 
+            span=video.createAt
+    div.watch__description
+        h1 Description
+        p=video.description
+        if loggedInUser && (String(video.owner._id) === String(loggedInUser._id))
+            div.watch__btns
+                a(href=`${video.id}/edit`) Edit Video
+                a(href=`${video.id}/delete`) Delete Video
+
+    if loggedIn
+        div.video__comments-add
+            if video.comments.length === 1
+                span.video__comments-count#commentCount #{video.comments.length} Comment
+            else 
+                span.video__comments-count#commentCount #{video.comments.length} Comments
+            form.video__comments-form#commentForm
+                if !loggedInUser.avatarUrl
+                    div.avatar-base.avatar--small
+                        span=loggedInUser.name[0]
+                else
+                    img(src="/" + loggedInUser.avatarUrl).avatar--small
+                textarea(placeholder="Write a comment", cols="100", rows="1")#textarea
+                button Add Comment
+    div.video__comments
+        ul 
+            each comment in comments.reverse()
+                li.video__comment(data-id=comment._id)
+                    div.video__comment-avatar
+                    if !comment.owner.avatarUrl
+                        div.avatar-base.avatar--small
+                            span=comment.owner.name[0]
+                    else
+                        img(src="/" + comment.owner.avatarUrl).avatar--small
+                    div.video__comment-content
+                        span.video__comment-owner=comment.owner.name
+                        span.video__comment-text=comment.text
+                    if loggedInUser && (String(comment.owner._id) === String(loggedInUser._id))
+                        div.video__comment-delete
+                            span#commentDeleteBtn ❌
+    
+
+block scripts 
+    script(src="/static/js/videoPlayer.js")
+    if loggedIn
+        script(src="/static/js/commentSection.js")

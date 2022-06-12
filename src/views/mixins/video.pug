@@ -1,0 +1,19 @@
+mixin video(video)
+    a(href=`videos/${video.id}`).video-mixin
+        div.video-mixin__thumbnail(style=`background-image:url(${video.thumbnailUrl}); background-size:cover; background-position:center;`)
+        div.video-mixin__data
+            div.video-mixin__avatar
+                if !video.owner.avatarUrl
+                    div.avatar-base.avatar--small
+                        span=video.owner.name[0]
+                else
+                    img(src="/" + video.owner.avatarUrl).avatar--small
+            div.video-mixin__text
+                div.video-mixin__title
+                    span=video.title
+                div.video-mixin__meta
+                    span #{video.owner.name} ∙ 
+                    if video.meta.views === 1
+                        span #{video.meta.views} view
+                    else 
+                        span #{video.meta.views} views

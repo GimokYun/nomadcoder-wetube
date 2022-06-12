@@ -1,0 +1,22 @@
+extends base
+include mixins/video
+
+block content
+    div.home__header
+        i.fa-solid.fa-arrow-trend-up
+        h1 Where Is My Money
+        h2 Here's some tips to get your money back.
+    div.video-grid
+        each item in videos 
+            +video(item)
+        else 
+            span.empty-message No videos found
+    div.quotes
+        i.fa-solid.fa-angle-left#quoteBtnLeft
+        div#quotePart.quotes__text
+            span#quote 
+            span#quoteAuthor
+        i.fa-solid.fa-angle-right#quoteBtnRight
+
+block scripts 
+    script(src="/static/js/quote.js")

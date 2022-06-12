@@ -1,0 +1,28 @@
+header 
+    a(href="/").header__logo
+        i.fa-solid.fa-arrow-trend-up
+        span WIMM
+    nav 
+        ul
+            li
+                a(href="/search") 
+                    i.fas.fa-search
+            if loggedIn 
+                li 
+                    a(href="/users/edit") Edit Profile
+                li
+                    a(href="/videos/upload") Upload Video
+                li 
+                    a(href="/users/logout") Log Out
+                li 
+                    a(href=`/users/${loggedInUser._id}`) 
+                        if !loggedInUser.avatarUrl
+                            div.avatar-base.avatar--small
+                                span=loggedInUser.name[0]
+                        else
+                            img(src="/" + loggedInUser.avatarUrl).avatar--small
+            else
+                li 
+                    a(href="/login") Login
+                li 
+                    a(href="/join") Join
