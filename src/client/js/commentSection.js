@@ -21,7 +21,7 @@ const addComment = (text, id, avatar, name) => {
     } else {
         const avatarImg = document.createElement("img");
         avatarImg.src = `/${avatar}`;
-        avatarImg.crossOrigin = true;
+        avatarImg.crossOrigin = "crossorigin";
         avatarImg.className = "avatar--small";
         avatarDiv.appendChild(avatarImg);
     }
