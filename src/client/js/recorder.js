@@ -68,6 +68,7 @@ const handleDownload = async () => {
 
 const stopRecording = () => {
     recordingBtn.innerText = "Download Recording";
+    recordingBtn.disabled = false;
     recorder.stop();
 };
 
@@ -75,10 +76,9 @@ const handleStartRecording = () => {
     const recordingIcon = document.createElement("i");
     recordingIcon.className = "fa-solid fa-circle";
     recordingBtn.innerText = "Recording";
-    recordingBtn.disabled = true;
     recordingBtn.prepend(recordingIcon);
     recordingBtn.removeEventListener("click", handleStartRecording);
-    recordingBtn.addEventListener("click", handleDownload);
+    recordingBtn.disabled = true;
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = (event) => {
         videoFile = URL.createObjectURL(event.data);
