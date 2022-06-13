@@ -3,6 +3,11 @@
         width:100%;
         height: 180px;
         background-color: ivory;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
     .video-mixin__data {
