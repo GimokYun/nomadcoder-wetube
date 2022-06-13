@@ -2,7 +2,7 @@ extends base
 
 block content
     div#videoContainer(data-id=video._id)
-        video(autoplay, src=video.fileUrl, crossorigin)
+        video(src=video.fileUrl, crossorigin)
         div#videoControls
             div.play
                 button#play.play__btn
