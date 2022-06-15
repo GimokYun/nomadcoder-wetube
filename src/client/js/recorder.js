@@ -26,7 +26,7 @@ const downloadFile = (fileUrl, fileName) => {
 const handleDownload = async () => {
     recordingBtn.removeEventListener("click", handleDownload);
     recordingBtn.innerText = "Transcoding...";
-    recordingBtn.disabled = true;
+    recordingBtn.setAttribute("disabled", true);
 
     const ffmpeg = createFFmpeg({log: true});
     await ffmpeg.load();
@@ -61,7 +61,7 @@ const handleDownload = async () => {
     URL.revokeObjectURL(mp4Url);
     URL.revokeObjectURL(thumbnailUrl);
 
-    recordingBtn.disabled = false;
+    recordingBtn.removeAttribute("disabled");
     recordingBtn.innerText = "Record Again";
     recordingBtn.addEventListener("click", handleStartRecording);
 };
@@ -72,7 +72,7 @@ const handleStartRecording = () => {
     recordingBtn.innerText = "Recording";
     recordingBtn.prepend(recordingIcon);
     recordingBtn.removeEventListener("click", handleStartRecording);
-    recordingBtn.disabled = true;
+    recordingBtn.setAttribute("disabled", true);
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = (event) => {
         videoFile = URL.createObjectURL(event.data);
@@ -85,7 +85,7 @@ const handleStartRecording = () => {
     setTimeout(() => {
         recorder.stop();
         recordingBtn.innerText = "Download Recording";
-        recordingBtn.disabled = false;
+        recordingBtn.removeAttribute("disabled");
         recordingBtn.addEventListener("click", handleDownload);
     }, 5000);
 };
