@@ -66,12 +66,6 @@ const handleDownload = async () => {
     recordingBtn.addEventListener("click", handleStartRecording);
 };
 
-const stopRecording = () => {
-    recordingBtn.innerText = "Download Recording";
-    recordingBtn.disabled = false;
-    recorder.stop();
-};
-
 const handleStartRecording = () => {
     const recordingIcon = document.createElement("i");
     recordingIcon.className = "fa-solid fa-circle";
@@ -88,7 +82,12 @@ const handleStartRecording = () => {
         previewVideo.play();
     };
     recorder.start();
-    setTimeout(stopRecording, 5000);
+    setTimeout(() => {
+        recorder.stop();
+        recordingBtn.innerText = "Download Recording";
+        recordingBtn.disabled = false;
+        recordingBtn.addEventListener("click", handleDownload);
+    }, 5000);
 };
 
 const init = async () => {
